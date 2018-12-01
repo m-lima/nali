@@ -1,3 +1,7 @@
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+
 function bd {
   if [[ "$1" =~ '^[0-9]+$' ]]
   then
