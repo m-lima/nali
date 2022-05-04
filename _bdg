@@ -25,4 +25,3 @@ then
   _describe -V 'history indices' list
 
 fi
-

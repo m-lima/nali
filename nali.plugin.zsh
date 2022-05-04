@@ -17,7 +17,8 @@ function bdg {
 
   if [[ -z $branches ]]
   then
-    return
+    echo 'No git branch history found' 2> /dev/null
+    return -1
   fi
 
   if [[ "$1" =~ '^[0-9]+$' ]]
