@@ -12,6 +12,22 @@ function bd {
 
 }
 
+function bdg {
+  local branches=(`git rev-parse --absolute-git-dir 2> /dev/null | xargs -I{} grep '.*checkout: moving from' "{}/logs/HEAD" | tail -r | awk 'NR>1{print NR" "$NF}' | sort -t ' ' -k2 -k1n | uniq -f1 | sort -n | head -9 | sed 's/.* //'`)
+
+  if [[ -z $branches ]]
+  then
+    return
+  fi
+
+  if [[ "$1" =~ '^[0-9]+$' ]]
+  then
+    git checkout "${branches[$1]}" > /dev/null
+  else
+    git checkout "${branches[1]}" > /dev/null
+  fi
+}
+
 function vd {
   if [[ "$1" =~ '^[0-9]+$' ]]
   then

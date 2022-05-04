@@ -1,0 +1,28 @@
+#compdef bdg
+
+# Reload by: unfunction _bdg && autoload -U _bdg
+
+if ((CURRENT == 2))
+then
+
+  # Setting the tag to indexes and disabling grouping
+  zstyle ":completion:${curcontext}:indexes" list-grouped no
+
+  local lines i list
+
+  # Allowing $HOME to be replaced
+  lines=(`git rev-parse --absolute-git-dir 2> /dev/null | xargs -I{} grep '.*checkout: moving from' "{}/logs/HEAD" | tail -r | awk 'NR>1{print NR" "$NF}' | sort -t ' ' -k2 -k1n | uniq -f1 | sort -n | head -9 | sed 's/.* //'`)
+  list=()
+  integer i
+
+  # The list is the format "value:description"
+  for (( i = 1; i <= $#lines; i++ ))
+  do
+    list+="$i:$lines[$i]"
+  done
+
+  # -V disables the ordering
+  _describe -V 'history indices' list
+
+fi
+
