@@ -58,10 +58,10 @@ function fd {
 
     while read line
     do
-      entry=$(echo $line | cut -d : -f 1)
+      entry="${line%%:*}"
       case $entry in
         $1)
-          dir=$(echo $line | cut -d : -f 2)
+          dir="${line#*:}"
           eval cd $dir/$2
           return
           ;;
