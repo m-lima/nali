@@ -17,10 +17,10 @@ function bdg {
   then
     local rev=('tac')
   else
-    local rev=('tail -r')
+    local rev=('tail' '-r')
   fi
 
-  local branches=(`git rev-parse --absolute-git-dir 2> /dev/null | xargs -I{} grep '.*checkout: moving from' "{}/logs/HEAD" | ${rev} | awk 'NR>1{print NR" "$NF}' | sort -t ' ' -k2 -k1n | uniq -f1 | sort -n | head -9 | sed 's/.* //'`)
+  local branches=($(git rev-parse --absolute-git-dir 2> /dev/null | xargs -I{} grep '.*checkout: moving from' "{}/logs/HEAD" | ${rev} | awk 'NR>1{print NR" "$NF}' | sort -t ' ' -k2 -k1n | uniq -f1 | sort -n | head -9 | sed 's/.* //'))
 
   if [[ -z $branches ]]
   then
