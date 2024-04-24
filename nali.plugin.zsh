@@ -12,7 +12,7 @@ function bd {
 
 }
 
-function bdg {
+function bgb {
   if command -v tac &> /dev/null
   then
     local rev=('tac')
