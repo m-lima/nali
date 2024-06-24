@@ -1,6 +1,6 @@
-#compdef bdg
+#compdef bgb
 
-# Reload by: unfunction _bdg && autoload -U _bdg
+# Reload by: unfunction _bgb && autoload -U _bgb
 
 if ((CURRENT == 2))
 then
