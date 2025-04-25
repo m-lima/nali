@@ -53,13 +53,13 @@ function vd {
   cd $BACK
 }
 
-function fd {
+function td {
   if [ "$1" ]
   then
 
-    if [ ! -f ~/.config/m-lima/fd/config ]
+    if [ ! -f ~/.config/m-lima/td/config ]
     then
-      echo Entry file not found at "$HOME/.config/m-lima/fd/config"
+      echo Entry file not found at "$HOME/.config/m-lima/td/config"
       return -1
     fi
 
@@ -73,7 +73,7 @@ function fd {
           return
           ;;
       esac
-    done < ~/.config/m-lima/fd/config
+    done < ~/.config/m-lima/td/config
     echo Entry not found
     return -1
 
