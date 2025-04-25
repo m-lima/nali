@@ -1,12 +1,12 @@
-#compdef fd
+#compdef td
 
-# Reload by: unfunction _fd && autoload -U _fd
+# Reload by: unfunction _td && autoload -U _td
 
-if [ -f ~/.config/m-lima/fd/config ]
+if [ -f ~/.config/m-lima/td/config ]
 then
   if (( CURRENT == 2 ))
   then
-    local list=($(cat ~/.config/m-lima/fd/config))
+    local list=($(cat ~/.config/m-lima/td/config))
     _describe 'targets' list
 
   elif (( CURRENT == 3 ))
@@ -19,7 +19,7 @@ then
         eval _path_files -W $(echo $line | cut -d : -f 2) -/
         return
       fi
-    done < ~/.config/m-lima/fd/config
+    done < ~/.config/m-lima/td/config
 
   fi
 fi
